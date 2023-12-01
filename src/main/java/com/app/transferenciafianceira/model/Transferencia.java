@@ -1,19 +1,30 @@
 package com.app.transferenciafianceira.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Objects;
 
-public class Tranferencia extends EstruturaTranferencia {
+@Entity
+public class Transferencia extends EstruturaTransferencia {
 
     private static final long serialVersionUID = 8463643755828714711L;
+    @Column(name = "conta_origem")
     private String contaOrigem;
+    @Column(name = "conta_destino")
     private String contaDestino;
+    @Column(name = "valor_transferencia")
     private BigDecimal valorTranferencia;
+    @Column(name = "taxa")
     private BigDecimal taxa;
-    private BigDecimal dataAgentamento;
+    @Column(name = "data_agentamento")
+    private LocalDate dataAgentamento;
+    @Column(name = "valor_taxa")
     private BigDecimal valorTaxa;
 
-    public Tranferencia(Integer id, String contaOrigem, String contaDestino, BigDecimal valorTranferencia, BigDecimal taxa, BigDecimal dataAgentamento, BigDecimal valorTaxa) {
+    public Transferencia(Integer id, String contaOrigem, String contaDestino, BigDecimal valorTranferencia, BigDecimal taxa, LocalDate dataAgentamento, BigDecimal valorTaxa) {
         super(id);
         this.contaOrigem = contaOrigem;
         this.contaDestino = contaDestino;
@@ -21,6 +32,10 @@ public class Tranferencia extends EstruturaTranferencia {
         this.taxa = taxa;
         this.dataAgentamento = dataAgentamento;
         this.valorTaxa = valorTaxa;
+    }
+
+    public Transferencia() {
+        super();
     }
 
     public String getContaOrigem() {
@@ -55,11 +70,11 @@ public class Tranferencia extends EstruturaTranferencia {
         this.taxa = taxa;
     }
 
-    public BigDecimal getDataAgentamento() {
+    public LocalDate getDataAgentamento() {
         return dataAgentamento;
     }
 
-    public void setDataAgentamento(BigDecimal dataAgentamento) {
+    public void setDataAgentamento(LocalDate dataAgentamento) {
         this.dataAgentamento = dataAgentamento;
     }
 
@@ -75,7 +90,7 @@ public class Tranferencia extends EstruturaTranferencia {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Tranferencia that = (Tranferencia) o;
+        Transferencia that = (Transferencia) o;
         return Objects.equals(contaOrigem, that.contaOrigem) && Objects.equals(contaDestino, that.contaDestino) && Objects.equals(valorTranferencia, that.valorTranferencia) && Objects.equals(taxa, that.taxa) && Objects.equals(dataAgentamento, that.dataAgentamento) && Objects.equals(valorTaxa, that.valorTaxa);
     }
 
