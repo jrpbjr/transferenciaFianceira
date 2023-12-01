@@ -1,5 +1,6 @@
 package com.app.transferenciafianceira.model;
 
+import com.app.transferenciafianceira.model.Dto.TransferenciaDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
@@ -8,7 +9,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-public class Transferencia extends EstruturaTransferencia {
+public class TransferenciaModel extends EstruturaTransferencia {
 
     private static final long serialVersionUID = 8463643755828714711L;
     @Column(name = "conta_origem")
@@ -24,7 +25,7 @@ public class Transferencia extends EstruturaTransferencia {
     @Column(name = "valor_taxa")
     private BigDecimal valorTaxa;
 
-    public Transferencia(Integer id, String contaOrigem, String contaDestino, BigDecimal valorTranferencia, BigDecimal taxa, LocalDate dataAgentamento, BigDecimal valorTaxa) {
+    public TransferenciaModel(Integer id, String contaOrigem, String contaDestino, BigDecimal valorTranferencia, BigDecimal taxa, LocalDate dataAgentamento, BigDecimal valorTaxa) {
         super(id);
         this.contaOrigem = contaOrigem;
         this.contaDestino = contaDestino;
@@ -34,7 +35,16 @@ public class Transferencia extends EstruturaTransferencia {
         this.valorTaxa = valorTaxa;
     }
 
-    public Transferencia() {
+    public TransferenciaModel(TransferenciaDto transferenciaDto) {
+        super(transferenciaDto.getId());
+        this.contaOrigem = transferenciaDto.getContaOrigem();
+        this.contaDestino = transferenciaDto.getContaDestino();
+        this.valorTranferencia = transferenciaDto.getValorTranferencia();
+        this.taxa = transferenciaDto.getTaxa();
+        this.dataAgentamento = transferenciaDto.getDataAgentamento();
+    }
+
+    public TransferenciaModel() {
         super();
     }
 
@@ -90,7 +100,7 @@ public class Transferencia extends EstruturaTransferencia {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Transferencia that = (Transferencia) o;
+        TransferenciaModel that = (TransferenciaModel) o;
         return Objects.equals(contaOrigem, that.contaOrigem) && Objects.equals(contaDestino, that.contaDestino) && Objects.equals(valorTranferencia, that.valorTranferencia) && Objects.equals(taxa, that.taxa) && Objects.equals(dataAgentamento, that.dataAgentamento) && Objects.equals(valorTaxa, that.valorTaxa);
     }
 
