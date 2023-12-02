@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
-@Entity
+@Entity (name = "transferencia")
 public class TransferenciaModel extends EstruturaTransferencia {
 
     private static final long serialVersionUID = 8463643755828714711L;
@@ -25,8 +25,16 @@ public class TransferenciaModel extends EstruturaTransferencia {
     @Column(name = "valor_taxa")
     private BigDecimal valorTaxa;
 
-    public TransferenciaModel(Integer id, String contaOrigem, String contaDestino, BigDecimal valorTranferencia, BigDecimal taxa, LocalDate dataAgentamento, BigDecimal valorTaxa) {
-        super(id);
+    public TransferenciaModel(Integer id) {
+        super();
+    }
+    public TransferenciaModel() {
+        super();
+    }
+
+    public TransferenciaModel( String contaOrigem, String contaDestino, BigDecimal valorTranferencia, BigDecimal taxa, LocalDate dataAgentamento, BigDecimal valorTaxa) {
+        super();
+        this.id = id;
         this.contaOrigem = contaOrigem;
         this.contaDestino = contaDestino;
         this.valorTranferencia = valorTranferencia;
@@ -36,7 +44,7 @@ public class TransferenciaModel extends EstruturaTransferencia {
     }
 
     public TransferenciaModel(TransferenciaDto transferenciaDto) {
-        super(transferenciaDto.getId());
+        super();
         this.contaOrigem = transferenciaDto.getContaOrigem();
         this.contaDestino = transferenciaDto.getContaDestino();
         this.valorTranferencia = transferenciaDto.getValorTranferencia();
@@ -44,9 +52,7 @@ public class TransferenciaModel extends EstruturaTransferencia {
         this.dataAgentamento = transferenciaDto.getDataAgentamento();
     }
 
-    public TransferenciaModel() {
-        super();
-    }
+
 
     public String getContaOrigem() {
         return contaOrigem;
