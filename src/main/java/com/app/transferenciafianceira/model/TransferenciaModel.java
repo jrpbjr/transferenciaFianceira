@@ -17,7 +17,7 @@ public class TransferenciaModel extends EstruturaTransferencia {
     @Column(name = "conta_destino")
     private String contaDestino;
     @Column(name = "valor_transferencia")
-    private BigDecimal valorTranferencia;
+    private BigDecimal valorTransferencia;
     @Column(name = "taxa")
     private BigDecimal taxa;
     @Column(name = "data_agentamento")
@@ -32,12 +32,12 @@ public class TransferenciaModel extends EstruturaTransferencia {
         super();
     }
 
-    public TransferenciaModel( String contaOrigem, String contaDestino, BigDecimal valorTranferencia, BigDecimal taxa, LocalDate dataAgentamento, BigDecimal valorTaxa) {
+    public TransferenciaModel( String contaOrigem, String contaDestino, BigDecimal valorTransferencia, BigDecimal taxa, LocalDate dataAgentamento, BigDecimal valorTaxa) {
         super();
         this.id = id;
         this.contaOrigem = contaOrigem;
         this.contaDestino = contaDestino;
-        this.valorTranferencia = valorTranferencia;
+        this.valorTransferencia = valorTransferencia;
         this.taxa = taxa;
         this.dataAgentamento = dataAgentamento;
         this.valorTaxa = valorTaxa;
@@ -47,9 +47,9 @@ public class TransferenciaModel extends EstruturaTransferencia {
         super();
         this.contaOrigem = transferenciaDto.getContaOrigem();
         this.contaDestino = transferenciaDto.getContaDestino();
-        this.valorTranferencia = transferenciaDto.getValorTranferencia();
-        this.taxa = transferenciaDto.getTaxa();
-        this.dataAgentamento = transferenciaDto.getDataAgentamento();
+        this.valorTransferencia = transferenciaDto.getValorTransferencia();
+        //this.taxa = transferenciaDto.getTaxa();
+        this.dataAgentamento = transferenciaDto.getDataAgendamento();
     }
 
 
@@ -70,12 +70,12 @@ public class TransferenciaModel extends EstruturaTransferencia {
         this.contaDestino = contaDestino;
     }
 
-    public BigDecimal getValorTranferencia() {
-        return valorTranferencia;
+    public BigDecimal getValorTransferencia() {
+        return valorTransferencia;
     }
 
-    public void setValorTranferencia(BigDecimal valorTranferencia) {
-        this.valorTranferencia = valorTranferencia;
+    public void setValorTransferencia(BigDecimal valorTransferencia) {
+        this.valorTransferencia = valorTransferencia;
     }
 
     public BigDecimal getTaxa() {
@@ -107,12 +107,12 @@ public class TransferenciaModel extends EstruturaTransferencia {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TransferenciaModel that = (TransferenciaModel) o;
-        return Objects.equals(contaOrigem, that.contaOrigem) && Objects.equals(contaDestino, that.contaDestino) && Objects.equals(valorTranferencia, that.valorTranferencia) && Objects.equals(taxa, that.taxa) && Objects.equals(dataAgentamento, that.dataAgentamento) && Objects.equals(valorTaxa, that.valorTaxa);
+        return Objects.equals(contaOrigem, that.contaOrigem) && Objects.equals(contaDestino, that.contaDestino) && Objects.equals(valorTransferencia, that.valorTransferencia) && Objects.equals(taxa, that.taxa) && Objects.equals(dataAgentamento, that.dataAgentamento) && Objects.equals(valorTaxa, that.valorTaxa);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(contaOrigem, contaDestino, valorTranferencia, taxa, dataAgentamento, valorTaxa);
+        return Objects.hash(contaOrigem, contaDestino, valorTransferencia, taxa, dataAgentamento, valorTaxa);
     }
 
     @Override
@@ -120,7 +120,7 @@ public class TransferenciaModel extends EstruturaTransferencia {
         return "Tranferencia{" +
                 "contaOrigem='" + contaOrigem + '\'' +
                 ", contaDestino='" + contaDestino + '\'' +
-                ", valorTranferencia=" + valorTranferencia +
+                ", valorTranferencia=" + valorTransferencia +
                 ", taxa=" + taxa +
                 ", dataAgentamento=" + dataAgentamento +
                 ", valorTaxa=" + valorTaxa +

@@ -18,25 +18,25 @@ public class TransferenciaDto implements Serializable {
     @NotNull(message = "contaDestino e obrigatorio.")
     protected String contaDestino;
     @NotNull(message = "valorTranferencia e obrigatorio.")
-    protected BigDecimal valorTranferencia;
-    @NotNull(message = "taxa e obrigatorio.")
-    protected BigDecimal taxa;
+    protected BigDecimal valorTransferencia;
+    //@NotNull(message = "taxa e obrigatorio.")
+    //protected BigDecimal taxa;
 
     @NotNull(message = "dataAgentamento e obrigatorio.")
-    @DateTimeFormat(pattern = "dd/mm/yyyy")
-    protected LocalDate dataAgentamento;
+    @DateTimeFormat(pattern = "yyyy/mm/dd")
+    protected LocalDate dataAgendamento;
 
     public TransferenciaDto() {
     }
 
-    public TransferenciaDto(Integer id, String contaOrigem, String contaDestino, BigDecimal valorTranferencia, BigDecimal taxa, LocalDate dataAgentamento) {
+    public TransferenciaDto(Integer id, String contaOrigem, String contaDestino, BigDecimal valorTransferencia /*,BigDecimal taxa*/, LocalDate dataAgentamento) {
         super();
         this.id = id;
         this.contaOrigem = contaOrigem;
         this.contaDestino = contaDestino;
-        this.valorTranferencia = valorTranferencia;
-        this.taxa = taxa;
-        this.dataAgentamento = dataAgentamento;
+        this.valorTransferencia = valorTransferencia;
+        //this.taxa = taxa;
+        this.dataAgendamento = dataAgentamento;
     }
 
     public Integer getId() {
@@ -63,28 +63,28 @@ public class TransferenciaDto implements Serializable {
         this.contaDestino = contaDestino;
     }
 
-    public BigDecimal getValorTranferencia() {
-        return valorTranferencia;
+    public BigDecimal getValorTransferencia() {
+        return valorTransferencia;
     }
 
-    public void setValorTranferencia(BigDecimal valorTranferencia) {
-        this.valorTranferencia = valorTranferencia;
+    public void setValorTransferencia(BigDecimal valorTransferencia) {
+        this.valorTransferencia = valorTransferencia;
     }
 
-    public BigDecimal getTaxa() {
-        return taxa;
+    //public BigDecimal getTaxa() {
+    //    return taxa;
+    //}
+
+    //public void setTaxa(BigDecimal taxa) {
+    //    this.taxa = taxa;
+    //}
+
+    public LocalDate getDataAgendamento() {
+        return dataAgendamento;
     }
 
-    public void setTaxa(BigDecimal taxa) {
-        this.taxa = taxa;
-    }
-
-    public LocalDate getDataAgentamento() {
-        return dataAgentamento;
-    }
-
-    public void setDataAgentamento(LocalDate dataAgentamento) {
-        this.dataAgentamento = dataAgentamento;
+    public void setDataAgendamento(LocalDate dataAgendamento) {
+        this.dataAgendamento = dataAgendamento;
     }
 
 }
