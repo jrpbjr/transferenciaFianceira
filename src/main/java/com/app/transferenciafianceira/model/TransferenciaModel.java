@@ -22,9 +22,6 @@ public class TransferenciaModel extends EstruturaTransferencia {
     private BigDecimal taxa;
     @Column(name = "data_agentamento")
     private LocalDate dataAgentamento;
-    @Column(name = "valor_taxa")
-    private BigDecimal valorTaxa;
-
     public TransferenciaModel(Integer id) {
         super();
     }
@@ -32,7 +29,7 @@ public class TransferenciaModel extends EstruturaTransferencia {
         super();
     }
 
-    public TransferenciaModel( String contaOrigem, String contaDestino, BigDecimal valorTransferencia, BigDecimal taxa, LocalDate dataAgentamento, BigDecimal valorTaxa) {
+    public TransferenciaModel( String contaOrigem, String contaDestino, BigDecimal valorTransferencia, BigDecimal taxa, LocalDate dataAgentamentoa) {
         super();
         this.id = id;
         this.contaOrigem = contaOrigem;
@@ -40,7 +37,6 @@ public class TransferenciaModel extends EstruturaTransferencia {
         this.valorTransferencia = valorTransferencia;
         this.taxa = taxa;
         this.dataAgentamento = dataAgentamento;
-        this.valorTaxa = valorTaxa;
     }
 
     public TransferenciaModel(TransferenciaDto transferenciaDto) {
@@ -48,7 +44,6 @@ public class TransferenciaModel extends EstruturaTransferencia {
         this.contaOrigem = transferenciaDto.getContaOrigem();
         this.contaDestino = transferenciaDto.getContaDestino();
         this.valorTransferencia = transferenciaDto.getValorTransferencia();
-        //this.taxa = transferenciaDto.getTaxa();
         this.dataAgentamento = transferenciaDto.getDataAgendamento();
     }
 
@@ -94,25 +89,20 @@ public class TransferenciaModel extends EstruturaTransferencia {
         this.dataAgentamento = dataAgentamento;
     }
 
-    public BigDecimal getValorTaxa() {
-        return valorTaxa;
-    }
 
-    public void setValorTaxa(BigDecimal valorTaxa) {
-        this.valorTaxa = valorTaxa;
-    }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TransferenciaModel that = (TransferenciaModel) o;
-        return Objects.equals(contaOrigem, that.contaOrigem) && Objects.equals(contaDestino, that.contaDestino) && Objects.equals(valorTransferencia, that.valorTransferencia) && Objects.equals(taxa, that.taxa) && Objects.equals(dataAgentamento, that.dataAgentamento) && Objects.equals(valorTaxa, that.valorTaxa);
+        return Objects.equals(contaOrigem, that.contaOrigem) && Objects.equals(contaDestino, that.contaDestino) && Objects.equals(valorTransferencia, that.valorTransferencia) && Objects.equals(taxa, that.taxa) && Objects.equals(dataAgentamento, that.dataAgentamento);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(contaOrigem, contaDestino, valorTransferencia, taxa, dataAgentamento, valorTaxa);
+        return Objects.hash(contaOrigem, contaDestino, valorTransferencia, taxa, dataAgentamento);
     }
 
     @Override
@@ -123,7 +113,6 @@ public class TransferenciaModel extends EstruturaTransferencia {
                 ", valorTranferencia=" + valorTransferencia +
                 ", taxa=" + taxa +
                 ", dataAgentamento=" + dataAgentamento +
-                ", valorTaxa=" + valorTaxa +
                 '}';
     }
 }
